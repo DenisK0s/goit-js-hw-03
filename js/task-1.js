@@ -1,15 +1,46 @@
-// Напиши функцию logItems(array), которая получает массив и использует цикл for, 
-// который для каждого элемента массива будет выводить в консоль сообщение в формате[номер элемента]-[значение элемента].
 
-// Нумерация должна начинаться с 1. 
-// К примеру для первого элемента массива['Mango', 'Poly', 'Ajax'] с индексом 0 будет выведено '1 - Mango', а для индекса 2 выведет '3 - Ajax'.
-
-const logItems = (array) => {
-  for (let i = 0; i < array.length; i += 1) {
-    console.log(`${i + 1} - ${array[i]}`);
-  }
+const user = {
+  name: 'Mango',
+  age: 20,
+  hobby: 'html',
+  premium: true,
 };
 
-logItems(['Mango', 'Poly', 'Ajax', 'Lux', 'Jay', 'Kong']);
+// добавляет поле mood со значением 'happy'
+user.mood = 'happy';
+user['mood'] = 'happy';
 
-logItems([5, 10, 15, 20, 25, 30, 35, 40, 45, 50]);
+console.table(user);
+
+// заменяет значение hobby на 'skydiving'
+user.hobby = 'skydiving';
+user['hobby'] = 'skydiving';
+
+console.table(user);
+
+// заменяет значение premium на false
+user.premium = false;
+user['premium'] = false;
+
+console.table(user);
+
+// выводит содержимое объекта user в формате ключ:значение используя Object.keys() и for...of
+const userKey = Object.keys(user);
+
+for (const key of userKey) {
+  console.log(`${key}: ${user[key]}`);
+}
+
+// выводит содержимое объекта user в формате ключ:значение используя for...in
+for (const key in user) {
+  console.log(`${key}: ${user[key]}`);
+}
+
+// функция
+const vievKeyValue = obj => {
+  for (const key in obj) {
+  console.log(`${key}: ${user[key]}`);
+  }
+}
+    
+vievKeyValue(user);

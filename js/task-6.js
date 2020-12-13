@@ -1,38 +1,31 @@
-// Напиши скрипт со следующим функционалом:
+// Напиши функцию calculateTotalPrice(allProdcuts, productName), которая получает массив объектов и имя продукта(значение свойства name).
+// Возвращает общую стоимость продукта(цена * количество).
 
-// При загрузке страницы пользователю предлагается в prompt ввести число.
-// Ввод сохраняется в переменную input и добавляется в массив чисел numbers.
-// Операция ввода числа пользователем и сохранение в массив продолжается до тех пор, пока пользователь не нажмет Cancel в prompt.
-// После того как пользователь прекратил ввод нажав Cancel, если массив не пустой,
-//   необходимо посчитать сумму всех элементов массива и записать ее в переменную total.
-// Используй цикл for или for...of.После чего в консоль выведи строку 'Общая сумма чисел равна [сумма]'.
-// Делать проверку того, что пользователь ввел именно число, а не произвольный набор символов, не обязательно.
-// Если хочешь, в случае некорректного ввода, показывай alert с текстом 'Было введено не число, попробуйте еще раз',
-//   при этом результат prompt записывать в массив чисел не нужно, после чего снова пользователю предлагается ввести число в prompt.
+// Вызовы функции для проверки работоспособности твоей реализации.
 
-let total = 0;
-let numbers = [];
+const products = [
+  { name: 'Радар', price: 1300, quantity: 4 },
+  { name: 'Сканер', price: 2700, quantity: 3 },
+  { name: 'Дроид', price: 400, quantity: 7 },
+  { name: 'Захват', price: 1200, quantity: 2 },
+];
 
-do {
-  const input = prompt('Введите число!');
+const calculateTotalPrice = (allProdcuts, productName) => {
+  let totalPrice;
 
-  if (input === null) {
-    break;
+  for (const product of allProdcuts) {
+    if (product.name === productName) {
+      totalPrice = product.price * product.quantity;
+      break;
+    }
   }
 
-  if (isNaN(input)) {
-    alert('Было введено не число, попробуйте еще раз');
-    break;
-  }
+  return totalPrice;
+};
 
-  numbers.push(+input);
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(calculateTotalPrice(products, 'Радар')); // 5200
 
-} while (true);
-
-if (numbers.length) {
-  for (const number of numbers) {
-    total += number;
-  }
-
-  console.log(`Общая сумма чисел равна ${total}`);
-}
+console.log(calculateTotalPrice(products, 'Дроид')); // 2800
