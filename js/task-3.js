@@ -4,26 +4,11 @@
 
 const findBestEmployee = function (employees) {
 
-  const employeeValues = Object.values(employees);
-
-  let bigestValue = employeeValues[0];
-
-  for (const value of employeeValues) {
-    if (value > bigestValue) {
-      bigestValue = value;
-    }
-  }
-
-  let bestEmployee;
-
   for (const key in employees) {
-    if (employees[key] === bigestValue) {
-      bestEmployee = key;
+    if (employees[key] === Math.max(...Object.values(employees))) {
+      return key;
     }
   }
-
-  return bestEmployee;
-
 };
 
 /*
